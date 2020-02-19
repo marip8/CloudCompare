@@ -76,6 +76,11 @@ if ( COMPILE_CC_CORE_LIB_SHARED )
 	else()
 		install_shared( CC_CORE_LIB ${CMAKE_INSTALL_LIBDIR}/cloudcompare 0 ) #default destination: /usr/lib/cloudcompare
 	endif()
+
+	# install headers
+	install(FILES ${header_list}
+	  DESTINATION include/${PROJECT_NAME}
+	 )
 endif()
 
 if (WIN32)

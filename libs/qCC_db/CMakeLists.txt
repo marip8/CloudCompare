@@ -29,3 +29,8 @@ if( WIN32 OR APPLE )
 else()
 	install_shared( ${PROJECT_NAME} ${CMAKE_INSTALL_LIBDIR}/cloudcompare 0 ) #default destination: /usr/lib
 endif()
+
+# install headers
+install(FILES ${header_list}
+  DESTINATION include/${PROJECT_NAME}
+ )
