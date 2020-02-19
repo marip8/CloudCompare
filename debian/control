@@ -11,6 +11,7 @@ Homepage: http://www.danielgm.net/cc/
 Package: libcloudcompare
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Conflicts: cloudcompare
 Description: 3D point cloud and mesh processing software
  This is a 3D point cloud (and triangular mesh) processing software. It has
  been originally designed to perform comparison between two 3D points clouds
