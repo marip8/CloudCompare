@@ -1,0 +1,59 @@
+From 243b9ec25511494a3b884690c232129ef8f66846 Mon Sep 17 00:00:00 2001
+From: Levi Armstrong <levi.armstrong@gmail.com>
+Date: Tue, 18 Feb 2020 23:16:42 -0600
+Subject: [PATCH] Add install of headers
+
+---
+ CC/CMakeLists.txt          | 5 +++++
+ libs/qCC_db/CMakeLists.txt | 5 +++++
+ libs/qCC_io/CMakeLists.txt | 5 +++++
+ 3 files changed, 15 insertions(+)
+
+diff --git a/CC/CMakeLists.txt b/CC/CMakeLists.txt
+index d7667d12..accde7eb 100644
+--- a/CC/CMakeLists.txt
++++ b/CC/CMakeLists.txt
+@@ -76,6 +76,11 @@ if ( COMPILE_CC_CORE_LIB_SHARED )
+ 	else()
+ 		install_shared( CC_CORE_LIB ${CMAKE_INSTALL_LIBDIR}/cloudcompare 0 ) #default destination: /usr/lib/cloudcompare
+ 	endif()
++
++	# install headers
++	install(FILES ${header_list}
++	  DESTINATION include/${PROJECT_NAME}
++	 )
+ endif()
+ 
+ if (WIN32)
+diff --git a/libs/qCC_db/CMakeLists.txt b/libs/qCC_db/CMakeLists.txt
+index b128debf..9a1cc6ca 100644
+--- a/libs/qCC_db/CMakeLists.txt
++++ b/libs/qCC_db/CMakeLists.txt
+@@ -29,3 +29,8 @@ if( WIN32 OR APPLE )
+ else()
+ 	install_shared( ${PROJECT_NAME} ${CMAKE_INSTALL_LIBDIR}/cloudcompare 0 ) #default destination: /usr/lib
+ endif()
++
++# install headers
++install(FILES ${header_list}
++  DESTINATION include/${PROJECT_NAME}
++ )
+diff --git a/libs/qCC_io/CMakeLists.txt b/libs/qCC_io/CMakeLists.txt
+index 2c64525c..e66732f4 100644
+--- a/libs/qCC_io/CMakeLists.txt
++++ b/libs/qCC_io/CMakeLists.txt
+@@ -53,6 +53,11 @@ else()
+ 	install_shared( ${PROJECT_NAME} ${CMAKE_INSTALL_LIBDIR}/cloudcompare 0 ) #default destination: /usr/lib
+ endif()
+ 
++# install headers
++install(FILES ${header_list}
++  DESTINATION include/${PROJECT_NAME}
++ )
++
+ if(BUILD_TESTING)
+ 	add_subdirectory(Tests)
+ endif()
+-- 
+2.17.1
+
