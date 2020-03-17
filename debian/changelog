@@ -1,3 +1,8 @@
+libcloudcompare (2.10.3-9) bionic; urgency=medium
+
+  [ Levi Armstrong ]
+  * Add pcl plugin and tbb
+
 libcloudcompare (2.10.3-8) bionic; urgency=medium
 
   [ Levi Armstrong ]
