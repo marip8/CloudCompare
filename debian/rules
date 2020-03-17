@@ -36,7 +36,7 @@ override_dh_auto_configure:
 		-DFFMPEG_INCLUDE_DIR="/usr/include/$(DEBARCH)" \
 		-DFFMPEG_LIBRARY_DIR="/usr/lib/$(DEBARCH)" \
 		-DINSTALL_QBLUR_PLUGIN=ON \
-                -DINSTALL_PCL_PLUGIN=ON \
+                -DINSTALL_QPCL_PLUGIN=ON \
                 -DCOMPILE_WITH_QT=ON \
                 -DCOMPILE_WITH_TBB=ON
 #		-DCMAKE_BUILD_TYPE=Release \
