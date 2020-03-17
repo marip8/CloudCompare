@@ -1,9 +1,9 @@
-libcloudcompare (2.10.3-10) bionic; urgency=medium
+libcloudcompare (2.10.3-11) bionic; urgency=medium
 
   [ Levi Armstrong ]
   * Add pcl plugin and tbb
 
--- Levi Armstrong <levi.armstrong@gmail.com>  Mon, 16 Mar 2020 07:07:09 -0500
+ -- Levi Armstrong <levi.armstrong@gmail.com>  Mon, 16 Mar 2020 07:07:09 -0500
 
 libcloudcompare (2.10.3-8) bionic; urgency=medium
 
