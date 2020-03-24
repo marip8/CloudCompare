@@ -2,7 +2,7 @@ Source: libcloudcompare
 Section: graphics
 Priority: optional
 Maintainer: Levi Armstrong <levi.armstrong@gmail.com>
-Build-Depends: debhelper (>= 9), cmake, libqt5opengl5-dev, libcgal-dev, libdxflib-dev (>= 2.5.0), libpcl-dev, libtbb-dev, libproj-dev,
+Build-Depends: debhelper (>= 9), cmake, libqt5opengl5-dev, libcgal-dev, libdxflib-dev (>= 2.5.0), libpcl-dev, libtbb-dev, libproj-dev, python-vtk6,
  libglew-dev, libfreenect-dev, libgdal-dev, libgomp1, libboost-all-dev, libavcodec-dev, libavformat-dev, libswscale-dev,
  libjsoncpp-dev, libcurl4-gnutls-dev | libcurl4-openssl-dev, libcgal-qt5-dev, libqt5svg5-dev, qttools5-dev-tools, qttools5-dev
 Standards-Version: 4.2.1
