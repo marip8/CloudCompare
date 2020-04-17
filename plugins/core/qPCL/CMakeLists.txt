@@ -6,6 +6,10 @@ option( INSTALL_QPCL_PLUGIN "Check to install qPCL plugin" OFF )
 if (INSTALL_QPCL_PLUGIN)
     #requires PCL
     find_package(PCL REQUIRED)
+
+    if(NOT "${PCL_LIBRARIES}" STREQUAL "")
+      list(REMOVE_ITEM PCL_LIBRARIES "vtkproj4")
+    endif()
     
     #PCL bridge library
     add_subdirectory(PclUtils)
