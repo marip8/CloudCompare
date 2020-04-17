@@ -1,0 +1,27 @@
+From 6f19c4fd019ffb31ddedaf0e887f050bd11da311 Mon Sep 17 00:00:00 2001
+From: Levi Armstrong <levi.armstrong@gmail.com>
+Date: Fri, 17 Apr 2020 13:55:23 -0500
+Subject: [PATCH] Remove vtkproj4
+
+---
+ plugins/core/qPCL/CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/plugins/core/qPCL/CMakeLists.txt b/plugins/core/qPCL/CMakeLists.txt
+index 7776e25d..a7447d8b 100644
+--- a/plugins/core/qPCL/CMakeLists.txt
++++ b/plugins/core/qPCL/CMakeLists.txt
+@@ -6,6 +6,10 @@ option( INSTALL_QPCL_PLUGIN "Check to install qPCL plugin" OFF )
+ if (INSTALL_QPCL_PLUGIN)
+     #requires PCL
+     find_package(PCL REQUIRED)
++
++    if(NOT "${PCL_LIBRARIES}" STREQUAL "")
++      list(REMOVE_ITEM PCL_LIBRARIES "vtkproj4")
++    endif()
+     
+     #PCL bridge library
+     add_subdirectory(PclUtils)
+-- 
+2.17.1
+
