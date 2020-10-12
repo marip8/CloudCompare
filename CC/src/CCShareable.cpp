@@ -52,7 +52,7 @@ void CCShareable::link()
 
 void CCShareable::release()
 {
-	if (m_linkCount > 1)
+    if (m_linkCount > 0)
 		--m_linkCount;
 	else
 		delete this;

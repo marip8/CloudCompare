@@ -394,6 +394,7 @@ namespace CCLib
 				return -1;
 			}
 
+            sf->link();
 			return static_cast<int>(m_scalarFields.size()) - 1;
 		}
 

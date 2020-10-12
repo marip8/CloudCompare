@@ -3257,22 +3257,22 @@ DgmOctree::octreeCell::~octreeCell()
 #include <QtConcurrentMap>
 #include <QThreadPool>
 
-/*** FOR THE MULTI THREADING WRAPPER ***/
-struct octreeCellDesc
-{
-	DgmOctree::CellCode truncatedCode;
-	unsigned i1, i2;
-	unsigned char level;
-};
+///*** FOR THE MULTI THREADING WRAPPER ***/
+//struct octreeCellDesc
+//{
+//  DgmOctree::CellCode truncatedCode;
+//  unsigned i1, i2;
+//  unsigned char level;
+//};
 
-static DgmOctree* s_octree_MT = nullptr;
-static DgmOctree::octreeCellFunc s_func_MT = nullptr;
-static void** s_userParams_MT = nullptr;
-static GenericProgressCallback* s_progressCb_MT = nullptr;
-static NormalizedProgress* s_normProgressCb_MT = nullptr;
-static bool s_cellFunc_MT_success = true;
+//static DgmOctree* s_octree_MT = nullptr;
+//static DgmOctree::octreeCellFunc s_func_MT = nullptr;
+//static void** s_userParams_MT = nullptr;
+//static GenericProgressCallback* s_progressCb_MT = nullptr;
+//static NormalizedProgress* s_normProgressCb_MT = nullptr;
+//static bool s_cellFunc_MT_success = true;
 
-void LaunchOctreeCellFunc_MT(const octreeCellDesc& desc)
+void DgmOctree::LaunchOctreeCellFunc_MT(const octreeCellDesc& desc)
 {
 	//skip cell if process is aborted/has failed
 	if (!s_cellFunc_MT_success)
@@ -3539,7 +3539,7 @@ unsigned DgmOctree::executeFunctionForAllCellsAtLevel(	unsigned char level,
 			maxThreadCount = QThread::idealThreadCount();
 		}
 		QThreadPool::globalInstance()->setMaxThreadCount(maxThreadCount);
-		QtConcurrent::blockingMap(cells, LaunchOctreeCellFunc_MT);
+        QtConcurrent::blockingMap(cells, [this](const octreeCellDesc& arg) { LaunchOctreeCellFunc_MT(arg); });
 
 #ifdef COMPUTE_NN_SEARCH_STATISTICS
 		FILE* fp = fopen("octree_log.txt", "at");
@@ -4089,7 +4089,7 @@ unsigned DgmOctree::executeFunctionForAllCellsStartingAtLevel(unsigned char star
 			maxThreadCount = QThread::idealThreadCount();
 		}
 		QThreadPool::globalInstance()->setMaxThreadCount(maxThreadCount);
-		QtConcurrent::blockingMap(cells, LaunchOctreeCellFunc_MT);
+        QtConcurrent::blockingMap(cells, [this](const octreeCellDesc& arg) { LaunchOctreeCellFunc_MT(arg); });
 
 #ifdef COMPUTE_NN_SEARCH_STATISTICS
 		FILE* fp=fopen("octree_log.txt","at");

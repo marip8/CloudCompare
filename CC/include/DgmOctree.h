@@ -1266,7 +1266,27 @@ protected:
 		\param end last index of the sub-list in which to perform the binary search
 		\return the index of the cell (or 'm_numberOfProjectedPoints' if none found)
 	**/
-	unsigned getCellIndex(CellCode truncatedCellCode, unsigned char bitDec, unsigned begin, unsigned end) const;
+  unsigned getCellIndex(CellCode truncatedCellCode,
+                        unsigned char bitDec,
+                        unsigned begin,
+                        unsigned end) const;
+
+  /*** FOR THE MULTI THREADING WRAPPER ***/
+  struct octreeCellDesc
+  {
+    DgmOctree::CellCode truncatedCode;
+    unsigned i1, i2;
+    unsigned char level;
+  };
+
+  DgmOctree *s_octree_MT = nullptr;
+  DgmOctree::octreeCellFunc s_func_MT = nullptr;
+  void **s_userParams_MT = nullptr;
+  GenericProgressCallback *s_progressCb_MT = nullptr;
+  NormalizedProgress *s_normProgressCb_MT = nullptr;
+  bool s_cellFunc_MT_success = true;
+
+  void LaunchOctreeCellFunc_MT(const octreeCellDesc &desc);
 };
 
 }
